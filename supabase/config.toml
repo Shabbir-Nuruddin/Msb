@@ -1,0 +1,25 @@
+project_id = "msb-dubai"
+
+[functions]
+  [functions.admin-create-ticket]
+    verify_jwt = false
+  [functions.admin-list-users]
+    verify_jwt = false
+  [functions.auth-email-hook]
+    verify_jwt = false
+  [functions.dodo-cancel-subscription]
+    verify_jwt = false
+  [functions.dodo-checkout]
+    verify_jwt = false
+  [functions.dodo-sync-subscription]
+    verify_jwt = false
+  [functions.dodo-webhook]
+    verify_jwt = false
+  [functions.process-email-queue]
+    verify_jwt = true
+  [functions.faq-questions]
+    verify_jwt = false
+  [functions.youtube-search]
+    verify_jwt = false
+  [functions.send-onboarding-email]
+    verify_jwt = false

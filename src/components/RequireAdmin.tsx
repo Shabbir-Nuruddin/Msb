@@ -1,0 +1,24 @@
+import { ReactNode } from "react";
+import { Navigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { isAdminEmail } from "@/lib/admin";
+
+/**
+ * Gate a route to admin accounts only. Non-admins are bounced to /dashboard.
+ */
+export const RequireAdmin = ({ children }: { children: ReactNode }) => {
+  const { user, loading } = useAuth();
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="h-6 w-6 animate-spin text-primary" />
+      </div>
+    );
+  }
+  const isAdmin = isAdminEmail(user?.email);
+  if (!isAdmin) return <Navigate to="/dashboard" replace />;
+  return <>{children}</>;
+};
+
+export default RequireAdmin;

@@ -1,0 +1,15 @@
+# MSB Smart Revision
+
+> The official AI-powered revision platform for MSB Private School, Dubai. Cambridge IGCSE, AS & A Level. Personalised study roadmaps, AI-marked questions, mock papers, and notes — for students, teachers and parents.
+
+MSB Smart Revision helps MSB students prepare for their Cambridge examinations with a personalised roadmap, AI-generated and AI-marked practice questions, full mock papers with examiner-style mark schemes, AI-generated revision notes, and exam FAQs that match real Cambridge mark-scheme phrasing. Teachers can track class progress and set AI-assisted targets; parents can follow their child's activity.
+
+## Pages
+
+- [Home](/): Overview of the platform — AI notes, mock papers, and smart study plans tailored to the Cambridge curriculum.
+- [Sign in / Sign up](/auth): Create an account or log in as a student, teacher, or parent.
+
+## Optional
+
+- [Terms of Service](/terms): Acceptable use of the school revision platform and AI content disclaimer.
+- [Privacy Policy](/privacy): What we collect and how it is used within the school.

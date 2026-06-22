@@ -1,0 +1,59 @@
+<svg width="600" height="760" viewBox="0 0 600 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MSB Private School Dubai 1985 crest">
+  <defs>
+    <style>
+      .stroke { fill: none; stroke: #1B4DB3; stroke-width: 6; }
+      .thin { fill: none; stroke: #1B4DB3; stroke-width: 3; }
+      .fillblue { fill: #1B4DB3; }
+      .word { fill: #1B4DB3; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; }
+      .tag { fill: #1B4DB3; font-family: Georgia, 'Times New Roman', serif; letter-spacing: 6px; }
+    </style>
+  </defs>
+
+  <!-- Ornate outer frame (stylised baroque cartouche) -->
+  <path class="stroke" d="M300 40
+    C 360 40 392 70 430 70
+    C 500 70 540 120 540 190
+    C 540 240 560 300 560 380
+    C 560 470 540 540 540 600
+    C 540 680 470 720 380 720
+    C 340 720 320 740 300 740
+    C 280 740 260 720 220 720
+    C 130 720 60 680 60 600
+    C 60 540 40 470 40 380
+    C 40 300 60 240 60 190
+    C 60 120 100 70 170 70
+    C 208 70 240 40 300 40 Z" />
+
+  <!-- top finial -->
+  <circle class="stroke" cx="300" cy="34" r="12" />
+
+  <!-- Inner concentric ovals -->
+  <ellipse class="thin" cx="300" cy="395" rx="205" ry="250" />
+  <ellipse class="thin" cx="300" cy="395" rx="190" ry="233" />
+
+  <!-- Top decorative flourish -->
+  <g class="fillblue">
+    <circle cx="300" cy="250" r="9" />
+    <path class="thin" d="M250 268 q50 -42 100 0" />
+    <path class="thin" d="M210 272 q14 -22 34 -10" />
+    <path class="thin" d="M390 272 q-14 -22 -34 -10" />
+  </g>
+  <line class="thin" x1="205" y1="300" x2="395" y2="300" />
+
+  <!-- MSB wordmark -->
+  <text class="word" x="300" y="430" font-size="150" text-anchor="middle">MSB</text>
+
+  <!-- Bottom divider + flourish -->
+  <line class="thin" x1="205" y1="478" x2="395" y2="478" />
+  <g class="fillblue">
+    <circle cx="300" cy="512" r="9" />
+    <path class="thin" d="M250 500 q50 42 100 0" />
+  </g>
+
+  <!-- PRIVATE SCHOOL -->
+  <text class="tag" x="300" y="585" font-size="30" text-anchor="middle">PRIVATE SCHOOL</text>
+
+  <!-- DUBAI 1985 -->
+  <text class="word" x="300" y="690" font-size="34" text-anchor="middle" letter-spacing="6">DUBAI</text>
+  <text class="word" x="300" y="726" font-size="30" text-anchor="middle" letter-spacing="6">1985</text>
+</svg>

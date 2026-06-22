@@ -1,0 +1,625 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* APEX — Academic war room. Deep navy, electric blue, no purple. */
+
+@layer base {
+  :root {
+    /* Surfaces — softer slate, lower contrast on bg, higher on text */
+    --background: 220 18% 11%;           /* warmer slate */
+    --background-elevated: 220 16% 14%;
+    --foreground: 210 22% 92%;           /* softer than pure white */
+
+    --card: 220 15% 15%;
+    --card-hover: 220 14% 18%;
+    --card-foreground: 210 22% 92%;
+
+    --popover: 220 16% 14%;
+    --popover-foreground: 210 22% 92%;
+
+    /* Accent — calmer indigo, less saturated */
+    --primary: 217 70% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 80% 65%;
+
+    --secondary: 215 17% 16%;
+    --secondary-foreground: 213 31% 95%;
+
+    --muted: 215 17% 14%;
+    --muted-foreground: 215 14% 57%;     /* #8B949E */
+    --text-muted: 215 9% 32%;            /* #484F58 */
+
+    --accent: 32 94% 44%;                /* amber #D97706 */
+    --accent-foreground: 0 0% 100%;
+
+    --success: 142 71% 36%;              /* green #16A34A */
+    --warning: 32 94% 44%;
+    --urgent: 0 72% 51%;                 /* red #DC2626 */
+    --urgent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 213 14% 21%;               /* #30363D */
+    --input: 215 17% 16%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;                    /* 8px cards, 6px buttons */
+
+    /* Subject colours — left border accents */
+    --subject-maths: 217 91% 60%;        /* blue */
+    --subject-biology: 142 71% 36%;      /* green */
+    --subject-chemistry: 271 91% 56%;    /* purple — only allowed for chem accent */
+    --subject-physics: 21 90% 55%;       /* orange #F97316 */
+
+    /* Shadows — minimal */
+    --shadow-card: 0 1px 2px hsl(215 28% 4% / 0.4);
+
+    --tx-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --tx-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 215 28% 6%;
+    --sidebar-foreground: 215 14% 65%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 17% 12%;
+    --sidebar-accent-foreground: 213 31% 95%;
+    --sidebar-border: 213 14% 18%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  /* Light mode (Settings toggle) */
+  html.light {
+    --background: 210 25% 98%;
+    --background-elevated: 0 0% 100%;
+    --foreground: 215 28% 12%;
+    --card: 0 0% 100%;
+    --card-hover: 210 20% 96%;
+    --card-foreground: 215 28% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 12%;
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 215 28% 12%;
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 14% 40%;
+    --border: 215 14% 86%;
+    --input: 215 14% 90%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 28% 25%;
+    --sidebar-accent: 210 20% 94%;
+    --sidebar-accent-foreground: 215 28% 12%;
+    --sidebar-border: 215 14% 86%;
+  }
+  html.light { color-scheme: light; }
+
+  /* ===== THEMES ===== Each overrides only the colour-affecting tokens. */
+}
+
+/* Themes live OUTSIDE @layer base so they always win over Tailwind's base layer
+   regardless of source order. They still cascade by specificity (html.theme-X). */
+
+  html.theme-midnight { /* uses :root tokens */ }
+
+  /* MSB — MSB Private School, Dubai. Royal cobalt blue on clean white. */
+  html.theme-msb {
+    --background: 0 0% 99%;
+    --background-elevated: 0 0% 100%;
+    --foreground: 222 40% 14%;
+    --card: 0 0% 100%;
+    --card-hover: 218 45% 97%;
+    --card-foreground: 222 40% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 40% 14%;
+    --primary: 219 76% 41%;             /* MSB royal blue #1850c0 */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 83% 55%;
+    --secondary: 218 38% 96%;
+    --secondary-foreground: 222 40% 16%;
+    --muted: 220 18% 95%;
+    --muted-foreground: 220 12% 40%;
+    --accent: 222 64% 28%;              /* deep navy accent */
+    --accent-foreground: 0 0% 100%;
+    --success: 142 60% 38%;
+    --warning: 32 90% 48%;
+    --urgent: 0 75% 50%;
+    --urgent-foreground: 0 0% 100%;
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 16% 88%;
+    --input: 220 16% 90%;
+    --ring: 219 76% 41%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 28% 28%;
+    --sidebar-primary: 219 76% 41%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 218 42% 95%;
+    --sidebar-accent-foreground: 219 76% 38%;
+    --sidebar-border: 220 16% 88%;
+    --sidebar-ring: 219 76% 41%;
+  }
+  html.theme-msb { color-scheme: light; }
+
+  /* MSB dark mode — same royal blue, on a deep navy-charcoal surface. Applied when
+     the mode is Dark (or Auto + OS is dark); more specific than html.theme-msb so
+     it overrides the light tokens above. */
+  html.theme-msb.dark {
+    --background: 222 30% 9%;
+    --background-elevated: 222 26% 12%;
+    --foreground: 0 0% 96%;
+    --card: 222 26% 12%;
+    --card-hover: 222 22% 16%;
+    --card-foreground: 0 0% 96%;
+    --popover: 222 26% 12%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 217 84% 62%;            /* brighter blue for contrast on dark */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 88% 68%;
+    --secondary: 222 18% 18%;
+    --secondary-foreground: 0 0% 94%;
+    --muted: 222 16% 18%;
+    --muted-foreground: 220 12% 65%;
+    --accent: 217 70% 56%;
+    --accent-foreground: 0 0% 100%;
+    --success: 142 55% 46%;
+    --warning: 32 90% 55%;
+    --urgent: 0 78% 60%;
+    --urgent-foreground: 0 0% 100%;
+    --destructive: 0 78% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 16% 22%;
+    --input: 222 16% 22%;
+    --ring: 217 84% 62%;
+    --sidebar-background: 222 30% 11%;
+    --sidebar-foreground: 0 0% 80%;
+    --sidebar-primary: 217 84% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 18% 18%;
+    --sidebar-accent-foreground: 0 0% 94%;
+    --sidebar-border: 222 16% 22%;
+    --sidebar-ring: 217 84% 62%;
+    color-scheme: dark;
+  }
+
+  html.theme-ocean {
+    --background: 196 45% 8%;
+    --background-elevated: 196 38% 12%;
+    --card: 196 35% 13%;
+    --card-hover: 196 32% 16%;
+    --secondary: 196 30% 15%;
+    --muted: 196 28% 13%;
+    --border: 196 25% 22%;
+    --input: 196 30% 15%;
+    --primary: 188 70% 48%;
+    --primary-glow: 188 80% 58%;
+    --ring: 188 70% 48%;
+    --accent: 168 60% 45%;
+    --sidebar-background: 196 50% 5%;
+    --sidebar-accent: 196 35% 12%;
+    --sidebar-border: 196 25% 18%;
+  }
+
+  html.theme-forest {
+    --background: 150 25% 9%;
+    --background-elevated: 150 22% 12%;
+    --card: 150 20% 13%;
+    --card-hover: 150 18% 16%;
+    --secondary: 150 18% 15%;
+    --muted: 150 16% 13%;
+    --border: 150 14% 22%;
+    --input: 150 18% 15%;
+    --primary: 142 60% 48%;
+    --primary-glow: 142 70% 58%;
+    --ring: 142 60% 48%;
+    --accent: 32 80% 50%;
+    --sidebar-background: 150 30% 5%;
+    --sidebar-accent: 150 22% 12%;
+    --sidebar-border: 150 14% 18%;
+  }
+
+  html.theme-rose {
+    --background: 340 18% 9%;
+    --background-elevated: 340 16% 12%;
+    --card: 340 14% 14%;
+    --card-hover: 340 12% 17%;
+    --secondary: 340 12% 16%;
+    --muted: 340 10% 14%;
+    --border: 340 10% 23%;
+    --input: 340 12% 16%;
+    --primary: 340 70% 60%;
+    --primary-glow: 340 80% 68%;
+    --ring: 340 70% 60%;
+    --accent: 28 85% 58%;
+    --sidebar-background: 340 22% 6%;
+    --sidebar-accent: 340 14% 13%;
+    --sidebar-border: 340 10% 20%;
+  }
+
+  html.theme-amber {
+    --background: 28 22% 9%;
+    --background-elevated: 28 18% 12%;
+    --card: 28 16% 14%;
+    --card-hover: 28 14% 17%;
+    --secondary: 28 14% 16%;
+    --muted: 28 12% 14%;
+    --border: 28 12% 23%;
+    --input: 28 14% 16%;
+    --primary: 32 90% 55%;
+    --primary-glow: 32 95% 65%;
+    --ring: 32 90% 55%;
+    --accent: 14 80% 55%;
+    --sidebar-background: 28 26% 6%;
+    --sidebar-accent: 28 16% 13%;
+    --sidebar-border: 28 12% 20%;
+  }
+
+  html.theme-light { /* uses html.light tokens above */ }
+
+  html.theme-paper {
+    --background: 38 35% 95%;
+    --background-elevated: 0 0% 100%;
+    --foreground: 25 30% 15%;
+    --card: 0 0% 100%;
+    --card-hover: 38 30% 92%;
+    --card-foreground: 25 30% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 30% 15%;
+    --secondary: 38 25% 90%;
+    --secondary-foreground: 25 30% 15%;
+    --muted: 38 25% 92%;
+    --muted-foreground: 25 18% 38%;
+    --border: 38 18% 80%;
+    --input: 38 18% 86%;
+    --primary: 22 70% 42%;
+    --primary-glow: 22 80% 52%;
+    --ring: 22 70% 42%;
+    --accent: 14 70% 48%;
+    --sidebar-background: 38 30% 92%;
+    --sidebar-foreground: 25 30% 25%;
+    --sidebar-accent: 38 25% 88%;
+    --sidebar-accent-foreground: 25 30% 15%;
+    --sidebar-border: 38 18% 78%;
+  }
+html.theme-paper { color-scheme: light; }
+
+  /* Notebook — warm cream notebook paper, vibrant pen accents */
+  html.theme-notebook {
+    --background: 42 50% 94%;
+    --background-elevated: 0 0% 100%;
+    --foreground: 222 35% 18%;
+    --card: 0 0% 100%;
+    --card-hover: 42 40% 90%;
+    --card-foreground: 222 35% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 35% 18%;
+    --secondary: 42 40% 88%;
+    --secondary-foreground: 222 35% 18%;
+    --muted: 42 35% 90%;
+    --muted-foreground: 222 18% 38%;
+    --border: 42 25% 78%;
+    --input: 42 25% 84%;
+    --primary: 220 80% 52%;
+    --primary-glow: 220 88% 62%;
+    --ring: 220 80% 52%;
+    --accent: 340 75% 55%;
+    --sidebar-background: 42 45% 90%;
+    --sidebar-foreground: 222 35% 22%;
+    --sidebar-accent: 42 38% 86%;
+    --sidebar-accent-foreground: 222 35% 18%;
+    --sidebar-border: 42 25% 76%;
+  }
+  html.theme-notebook { color-scheme: light; }
+
+  /* Inkwell — dark notebook (chalkboard / midnight study) */
+  html.theme-inkwell {
+    --background: 215 30% 10%;
+    --background-elevated: 215 28% 13%;
+    --card: 215 26% 14%;
+    --card-hover: 215 24% 17%;
+    --secondary: 215 22% 16%;
+    --muted: 215 20% 14%;
+    --border: 42 25% 30%;
+    --input: 215 22% 16%;
+    --primary: 42 90% 60%;
+    --primary-glow: 42 95% 70%;
+    --ring: 42 90% 60%;
+    --accent: 340 75% 60%;
+    --sidebar-background: 215 32% 7%;
+    --sidebar-accent: 215 26% 12%;
+    --sidebar-border: 215 22% 16%;
+  }
+
+@layer base {
+  * { @apply border-border; }
+  html { color-scheme: dark; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .font-mono, .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+}
+
+@layer components {
+  .surface {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+  }
+  .surface-hover {
+    transition: background 0.15s var(--tx-smooth), border-color 0.15s var(--tx-smooth);
+  }
+  .surface-hover:hover {
+    background: hsl(var(--card-hover));
+    border-color: hsl(var(--primary) / 0.4);
+  }
+  .btn-primary {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: hsl(var(--primary-glow)); }
+
+  .subj-maths { border-left: 4px solid hsl(var(--subject-maths)); }
+  .subj-biology { border-left: 4px solid hsl(var(--subject-biology)); }
+  .subj-chemistry { border-left: 4px solid hsl(var(--subject-chemistry)); }
+  .subj-physics { border-left: 4px solid hsl(var(--subject-physics)); }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Legacy aliases — keep older pages rendering correctly with new tokens */
+  .glass-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+  .glow-primary { box-shadow: 0 0 0 1px hsl(var(--primary) / 0.4); }
+  .glow-amber { box-shadow: 0 0 0 1px hsl(var(--accent) / 0.4); }
+  .text-urgent-gradient {
+    background: linear-gradient(135deg, hsl(var(--urgent)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@layer base {
+  :root {
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-urgent: linear-gradient(135deg, hsl(var(--urgent)), hsl(var(--accent)));
+    --gradient-hero: radial-gradient(ellipse at top, hsl(var(--primary) / 0.15), transparent 60%), hsl(var(--background));
+    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(215 17% 10%));
+  }
+}
+
+@layer utilities {
+  .animate-in-up { animation: in-up 0.5s var(--tx-spring) both; }
+  .animate-fade-in { animation: fade-in 0.4s ease-out both; }
+  .animate-slow-pulse { animation: slow-pulse 2.4s ease-in-out infinite; }
+
+  /* ===== Warm "study notebook" design language ===== */
+  /* MSB brand: royal cobalt blue → deep navy (no purple/orange). */
+  .warm-gradient {
+    background-image: linear-gradient(135deg, hsl(219 76% 45%) 0%, hsl(222 64% 28%) 100%);
+  }
+  .warm-gradient-soft {
+    background-image: linear-gradient(135deg, hsl(219 76% 45% / 0.08) 0%, hsl(222 64% 28% / 0.08) 100%);
+  }
+  .warm-gradient-text {
+    background-image: linear-gradient(135deg, hsl(219 76% 46%), hsl(222 64% 28%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .pill-nav {
+    @apply flex items-center gap-3 px-3 py-2 rounded-full text-sm transition-all;
+  }
+  .pill-nav-active {
+    background-image: linear-gradient(135deg, hsl(160 65% 35%), hsl(160 70% 45%));
+    color: white;
+    box-shadow: 0 4px 14px hsl(160 70% 40% / 0.35);
+  }
+
+  .quick-card {
+    @apply rounded-2xl p-5 border-l-4 transition-all;
+    background: hsl(var(--card));
+    box-shadow: 0 2px 6px hsl(0 0% 0% / 0.06);
+  }
+  .quick-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px hsl(0 0% 0% / 0.10); }
+  .quick-card.amber  { border-left-color: hsl(28 95% 58%);  }
+  .quick-card.violet { border-left-color: hsl(265 75% 62%); }
+  .quick-card.teal   { border-left-color: hsl(178 65% 48%); }
+  .quick-card.rose   { border-left-color: hsl(160 65% 45%); }
+  .quick-card.sky    { border-left-color: hsl(205 85% 58%); }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold;
+  }
+
+  .study-shell {
+    background: hsl(var(--background));
+  }
+  .study-shell .surface,
+  .study-shell .glass-card {
+    background: hsl(var(--background-elevated));
+    border-color: hsl(var(--border) / 0.65);
+    box-shadow: 0 24px 60px hsl(210 18% 15% / 0.06);
+  }
+  .study-shell .pill-nav {
+    background: hsl(var(--background));
+    border: 1px solid hsl(var(--border) / 0.55);
+  }
+  .study-shell .pill-nav-active {
+    background-image: linear-gradient(135deg, hsl(160 65% 35%), hsl(160 70% 45%));
+    color: white;
+    box-shadow: 0 0 20px hsl(160 70% 40% / 0.18);
+  }
+  .study-shell .dashboard-shell {
+    background: transparent;
+  }
+  .dashboard-shell .quick-card {
+    background: hsl(var(--card));
+    border-color: hsl(var(--border) / 0.6);
+  }
+  .dashboard-shell .chip {
+    box-shadow: inset 0 0 0 1px hsl(var(--border) / 0.12);
+  }
+  .chip-amber  { background: hsl(28 95% 88%);  color: hsl(28 80% 28%); }
+  .chip-violet { background: hsl(265 75% 90%); color: hsl(265 60% 30%); }
+  .chip-teal   { background: hsl(178 65% 85%); color: hsl(178 60% 22%); }
+  .chip-rose   { background: hsl(160 50% 88%); color: hsl(160 60% 22%); }
+  .chip-sky    { background: hsl(205 85% 88%); color: hsl(205 70% 28%); }
+  }
+
+@keyframes in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+
+/* ===== Notebook paper utilities (used by Notes redesign) ===== */
+.notebook-paper {
+  background-color: hsl(var(--card));
+  background-image:
+    linear-gradient(transparent 0px, transparent 31px, hsl(220 50% 55% / 0.18) 31px, hsl(220 50% 55% / 0.18) 32px),
+    linear-gradient(90deg, transparent 0px, transparent 47px, hsl(0 75% 55% / 0.45) 47px, hsl(0 75% 55% / 0.45) 49px, transparent 49px);
+  background-size: 100% 32px, 100% 100%;
+  background-position: 0 8px, 0 0;
+  position: relative;
+}
+html.theme-inkwell .notebook-paper,
+:root:not(.light):not(.theme-paper):not(.theme-notebook) .notebook-paper {
+  background-color: hsl(var(--card));
+  background-image:
+    linear-gradient(transparent 0px, transparent 31px, hsl(var(--primary) / 0.12) 31px, hsl(var(--primary) / 0.12) 32px),
+    linear-gradient(90deg, transparent 0px, transparent 47px, hsl(var(--accent) / 0.55) 47px, hsl(var(--accent) / 0.55) 49px, transparent 49px);
+}
+.notebook-grid {
+  background-color: hsl(var(--card));
+  background-image:
+    linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.font-handwritten { font-family: 'Caveat', 'Patrick Hand', cursive; }
+.font-marker { font-family: 'Patrick Hand', 'Kalam', cursive; }
+
+.highlighter {
+  background-image: linear-gradient(120deg, hsl(48 100% 70% / 0.55) 0%, hsl(48 100% 70% / 0.55) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 60%;
+  background-position: 0 80%;
+  padding: 0 2px;
+}
+.highlighter-pink   { background-image: linear-gradient(120deg, hsl(330 90% 75% / 0.55), hsl(330 90% 75% / 0.55)); }
+.highlighter-green  { background-image: linear-gradient(120deg, hsl(140 70% 70% / 0.55), hsl(140 70% 70% / 0.55)); }
+.highlighter-blue   { background-image: linear-gradient(120deg, hsl(200 90% 75% / 0.55), hsl(200 90% 75% / 0.55)); }
+.highlighter-purple { background-image: linear-gradient(120deg, hsl(280 80% 78% / 0.55), hsl(280 80% 78% / 0.55)); }
+.highlighter-orange { background-image: linear-gradient(120deg, hsl(28 95% 70% / 0.55),  hsl(28 95% 70% / 0.55)); }
+
+.sticky-note {
+  background: hsl(48 95% 78%);
+  color: hsl(40 50% 18%);
+  box-shadow: 2px 3px 0 hsl(0 0% 0% / 0.08), 0 2px 6px hsl(0 0% 0% / 0.08);
+  transform: rotate(-1.5deg);
+  font-family: 'Patrick Hand', cursive;
+}
+.sticky-note.pink   { background: hsl(330 90% 82%); color: hsl(330 50% 18%); transform: rotate(1.2deg); }
+.sticky-note.green  { background: hsl(140 65% 78%); color: hsl(140 40% 16%); transform: rotate(-0.8deg); }
+.sticky-note.blue   { background: hsl(200 85% 80%); color: hsl(210 50% 18%); transform: rotate(1.8deg); }
+.sticky-note.purple { background: hsl(280 70% 82%); color: hsl(280 45% 20%); transform: rotate(-2deg); }
+
+.washi-tape {
+  background: repeating-linear-gradient(45deg, hsl(48 100% 70% / 0.85) 0 8px, hsl(48 100% 80% / 0.85) 8px 16px);
+  box-shadow: 0 1px 3px hsl(0 0% 0% / 0.1);
+}
+
+.flip-card { perspective: 1200px; }
+.flip-card-inner { transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; position: relative; width: 100%; height: 100%; }
+.flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+.flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-face.back { transform: rotateY(180deg); }
+
+@keyframes wobble-in {
+  0% { opacity: 0; transform: rotate(-3deg) translateY(8px); }
+  100% { opacity: 1; transform: rotate(-1.5deg) translateY(0); }
+}
+.animate-sticky-in { animation: wobble-in 0.4s ease-out both; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 30s linear infinite; }
+
+/* ====== FlipButton — text always legible at start & end ====== */
+.flip-btn .flip-btn__text-wrap { mix-blend-mode: difference; }
+.flip-btn .flip-btn__text { transform: translateY(0); }
+.flip-btn:hover .flip-btn__text { animation: flip-btn-move 0.42s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+
+@keyframes flip-btn-move {
+  0%   { transform: translateY(0); }
+  49%  { transform: translateY(105%); }
+  50%  { transform: translateY(-105%); }
+  100% { transform: translateY(0); }
+}
+
+.flip-btn::before,
+.flip-btn::after {
+  --skew: 0.18;
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 102%;
+  background: var(--flip-sweep);
+  pointer-events: none;
+  left: calc(-50% - 50% * var(--skew));
+  top: -104%;
+  transform: skew(calc(150deg * var(--skew))) translateY(var(--flip-progress, 0));
+  transition: transform 0.32s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 0;
+}
+.flip-btn::after {
+  --flip-progress: 0%;
+  left: calc(50% + 50% * var(--skew));
+  top: 102%;
+  z-index: -1;
+}
+.flip-btn:hover::before { --flip-progress: 100%; }
+.flip-btn:hover::after  { --flip-progress: -102%; }
+
+.flip-btn .flip-btn__text-wrap { position: relative; z-index: 1; }
