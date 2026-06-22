@@ -1,0 +1,39 @@
+name: Supabase keep-alive
+
+# Free Supabase projects pause after ~7 days of DATABASE inactivity. This workflow
+# pings the `keep-alive` Edge Function once a day, which runs a real DB query and
+# resets that timer. Runs externally (GitHub) so it works even if the project is
+# already close to pausing. You can also trigger it manually from the Actions tab.
+#
+# NOTE: GitHub disables scheduled workflows in a repo with NO commits for 60 days.
+# As long as the repo gets an occasional commit (or you re-enable it), this keeps
+# running. The publishable key below is the public client key — safe to commit.
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # every day at 06:00 UTC
+  workflow_dispatch: {}    # allow manual runs
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping keep-alive function (real DB read)
+        run: |
+          set -e
+          URL="https://unjzcubupddibntftycj.supabase.co/functions/v1/keep-alive"
+          KEY="sb_publishable_c2iGPw6nNJ-b8LEwaOtJlA_FGW9mpTW"
+          echo "Pinging $URL"
+          code=$(curl -sS -o /tmp/resp.json -w "%{http_code}" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" "$URL")
+          echo "HTTP $code"
+          cat /tmp/resp.json || true
+          test "$code" = "200"
+
+      - name: Fallback — direct REST read (belt & braces)
+        if: always()
+        run: |
+          URL="https://unjzcubupddibntftycj.supabase.co/rest/v1/profiles?select=id&limit=1"
+          KEY="sb_publishable_c2iGPw6nNJ-b8LEwaOtJlA_FGW9mpTW"
+          curl -sS -o /dev/null -w "REST keep-alive HTTP %{http_code}\n" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" "$URL" || true
