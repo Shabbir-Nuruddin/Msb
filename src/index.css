@@ -111,14 +111,14 @@
     --card-foreground: 222 40% 14%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 40% 14%;
-    --primary: 219 76% 41%;             /* MSB royal blue #1850c0 */
+    --primary: 224 54% 37%;             /* MSB blue #2B4392 */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 217 83% 55%;
+    --primary-glow: 211 50% 56%;        /* #6692C3 */
     --secondary: 218 38% 96%;
     --secondary-foreground: 222 40% 16%;
     --muted: 220 18% 95%;
     --muted-foreground: 220 12% 40%;
-    --accent: 222 64% 28%;              /* deep navy accent */
+    --accent: 351 63% 36%;              /* MSB maroon #952231 */
     --accent-foreground: 0 0% 100%;
     --success: 142 60% 38%;
     --warning: 32 90% 48%;
@@ -128,15 +128,15 @@
     --destructive-foreground: 0 0% 100%;
     --border: 220 16% 88%;
     --input: 220 16% 90%;
-    --ring: 219 76% 41%;
+    --ring: 224 54% 37%;
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 222 28% 28%;
-    --sidebar-primary: 219 76% 41%;
+    --sidebar-primary: 224 54% 37%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 218 42% 95%;
-    --sidebar-accent-foreground: 219 76% 38%;
+    --sidebar-accent-foreground: 224 54% 34%;
     --sidebar-border: 220 16% 88%;
-    --sidebar-ring: 219 76% 41%;
+    --sidebar-ring: 224 54% 37%;
   }
   html.theme-msb { color-scheme: light; }
 
@@ -152,14 +152,14 @@
     --card-foreground: 0 0% 96%;
     --popover: 222 26% 12%;
     --popover-foreground: 0 0% 96%;
-    --primary: 217 84% 62%;            /* brighter blue for contrast on dark */
+    --primary: 220 60% 64%;            /* brighter MSB blue for contrast on dark */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 217 88% 68%;
+    --primary-glow: 220 66% 72%;
     --secondary: 222 18% 18%;
     --secondary-foreground: 0 0% 94%;
     --muted: 222 16% 18%;
     --muted-foreground: 220 12% 65%;
-    --accent: 217 70% 56%;
+    --accent: 351 58% 58%;             /* MSB maroon on dark */
     --accent-foreground: 0 0% 100%;
     --success: 142 55% 46%;
     --warning: 32 90% 55%;
@@ -169,15 +169,15 @@
     --destructive-foreground: 0 0% 100%;
     --border: 222 16% 22%;
     --input: 222 16% 22%;
-    --ring: 217 84% 62%;
+    --ring: 220 60% 64%;
     --sidebar-background: 222 30% 11%;
     --sidebar-foreground: 0 0% 80%;
-    --sidebar-primary: 217 84% 62%;
+    --sidebar-primary: 220 60% 64%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 222 18% 18%;
     --sidebar-accent-foreground: 0 0% 94%;
     --sidebar-border: 222 16% 22%;
-    --sidebar-ring: 217 84% 62%;
+    --sidebar-ring: 220 60% 64%;
     color-scheme: dark;
   }
 
@@ -423,15 +423,15 @@ html.theme-paper { color-scheme: light; }
   .animate-slow-pulse { animation: slow-pulse 2.4s ease-in-out infinite; }
 
   /* ===== Warm "study notebook" design language ===== */
-  /* MSB brand: royal cobalt blue → deep navy (no purple/orange). */
+  /* MSB brand: blue #2B4392 → maroon #952231. */
   .warm-gradient {
-    background-image: linear-gradient(135deg, hsl(219 76% 45%) 0%, hsl(222 64% 28%) 100%);
+    background-image: linear-gradient(135deg, hsl(224 54% 42%) 0%, hsl(351 63% 36%) 100%);
   }
   .warm-gradient-soft {
-    background-image: linear-gradient(135deg, hsl(219 76% 45% / 0.08) 0%, hsl(222 64% 28% / 0.08) 100%);
+    background-image: linear-gradient(135deg, hsl(224 54% 42% / 0.08) 0%, hsl(351 63% 36% / 0.08) 100%);
   }
   .warm-gradient-text {
-    background-image: linear-gradient(135deg, hsl(219 76% 46%), hsl(222 64% 28%));
+    background-image: linear-gradient(135deg, hsl(224 54% 42%), hsl(351 63% 36%));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
